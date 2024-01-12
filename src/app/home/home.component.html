@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="form-group row mb-2" *ngIf="guardado">
-                        <div class="col-sm-8 offset-sm-4">
+						<div class="col-sm-8 offset-sm-4">
                             <div class="alert alert-success" role="alert">
 								Enviado correctamente.
 							</div>
@@ -55,6 +55,27 @@
 			</div>
 			<div class="col-4 offset-1">
 				<h2>Enviados</h2>
+				<div class="alert alert-danger mt-2" role="alert" *ngIf="error_mensajes!=''">
+					{{error_mensajes}}
+				</div>
+				<div class="file mt-2" *ngIf="error_mensajes==''">
+					<div class="row mb-2" *ngFor="let mensaje of mensajes">
+						<div class="col-sm-8">
+							<b>{{mensaje["asunto"]}}</b>
+						</div>
+						<div class="col-sm-4">
+							<button type="button" class="btn btn-danger btn-sm" (click)="eliminar(mensaje['id'])" >
+								Eliminar
+							</button>
+						</div>
+						<div class="col-sm-12">
+							{{mensaje["mensaje"]}}
+						</div>
+						<div class="col-sm-12">
+							<hr/>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
