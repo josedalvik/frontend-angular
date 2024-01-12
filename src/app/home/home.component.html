@@ -76,6 +76,17 @@
 						</div>
 					</div>
 				</div>
+                <div class="row mb-2" *ngIf="eliminando!=0">
+					<div class="alert alert-primary" role="alert" *ngIf="eliminando==1">
+						Eliminando, por favor espera...
+					</div>
+					<div class="alert alert-danger" role="alert" *ngIf="eliminando==2">
+						Ha sucedido un error al eliminar.
+					</div>
+					<div class="alert alert-success" role="alert" *ngIf="eliminando==3">
+						Eliminado correctamente.
+					</div>
+                </div>
 			</div>
 		</div>
 	</div>

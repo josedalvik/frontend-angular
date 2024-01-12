@@ -28,7 +28,7 @@ export class Mensaje {
   }
   
   public eliminar(id:any){
-    return this.call(id, "eliminar");
+    return this.httpClient.get(Constants.apiserver+"eliminar/"+id);
   }
 
   private call(data:any, metodo:any){

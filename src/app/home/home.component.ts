@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   error = "";
   Form: FormGroup;
   guardado = false;
+  eliminando = 0;
   
   mensajes = [];
   error_mensajes = "";
@@ -48,11 +49,24 @@ export class HomeComponent implements OnInit {
       }else{
         this.error_mensajes = "Error de recuperación de datos.";
       }
-    }); this.error_mensajes = "Error de recuperación de datos.";
+    }); 
   }
   
   eliminar(id:any){
-     
+    this.eliminando = 1;
+    this.modeloMensaje.eliminar(id).subscribe((data:any)=>{
+      if(data['resultado']=="not ok"){
+        this.eliminando = 2;
+      }else if(data['resultado']=="ok"){
+        this.eliminando = 3;
+        this.recuperar();
+        setTimeout(() => {
+          this.eliminando = 0;
+        }, 3000);
+      }else{
+        this.eliminando = 2;
+      }
+    }); 
   }
   
   onsubmit() {
@@ -76,6 +90,9 @@ export class HomeComponent implements OnInit {
         this.guardado = true;
         this.Form.reset();
         this.recuperar();
+        setTimeout(() => {
+          this.guardado = false;
+        }, 3000);
       }else{
         this.error = "Error en la solicitud.";
       }
