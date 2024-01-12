@@ -45,4 +45,4 @@ Enjoy
 <br/>
 <b>Notas:</b>
 <br/>
-El script "npm start" establece la variable de entorno "NODE_OPTIONS=--openssl-legacy-provider" utilizando la librería "cross-env", si al ejecutar "npm start" tienes problemas de dificultad, entonces debes establecer manualmente la variable de entorno y a continuación ejecutar el comando "ng serve --open".
+El script "npm start" establece la variable de entorno "NODE_OPTIONS=--openssl-legacy-provider" utilizando la librería "cross-env", si al ejecutar "npm start" tienes problemas de compatibilidad, entonces debes establecer manualmente la variable de entorno y a continuación ejecutar el comando "ng serve --open".
