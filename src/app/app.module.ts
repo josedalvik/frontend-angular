@@ -12,13 +12,15 @@ import { HomeComponent } from './home/home.component';
 
 /* router */
 import {RouterModule} from '@angular/router';
+import { EditarComponent } from './editar/editar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    EditarComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import {RouterModule} from '@angular/router';
     HttpClientModule,
     RouterModule.forRoot(
       [
-        {path:'', component: HomeComponent}
+        {path:'', component: HomeComponent},
+        {path:'editar/:id', component: EditarComponent}
       ]
     ), 
   ],

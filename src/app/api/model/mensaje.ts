@@ -22,9 +22,13 @@ export class Mensaje {
   public recuperar(){
     return this.httpClient.get(Constants.apiserver+"recuperar");
   }
+
+  public obtener(id:any){
+    return this.httpClient.get(Constants.apiserver+"obtener/"+id);
+  }
   
-  public editar(mensaje:any){
-    return this.call(mensaje, "editar");
+  public editar(mensaje:any, id:any){
+    return this.call(mensaje, "editar/"+id);
   }
   
   public eliminar(id:any){

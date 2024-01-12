@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Mensaje } from '../api/model/mensaje';
 
 @Component({
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
   error_mensajes = "";
   
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private modeloMensaje: Mensaje,
   ) { }
@@ -67,6 +69,10 @@ export class HomeComponent implements OnInit {
         this.eliminando = 2;
       }
     }); 
+  }
+  
+  editar(id:any){
+    this.router.navigate(['/editar/'+id]);
   }
   
   onsubmit() {

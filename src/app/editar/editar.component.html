@@ -1,10 +1,18 @@
 <div class="file content">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-7">
-				<h2>Mensaje</h2>
-				<!------------------ mensaje ------------------>
-				<form [formGroup]="Form" (ngSubmit)="onsubmit()">
+	<!------------------ mensaje ------------------>
+	<form [formGroup]="Form" (ngSubmit)="onsubmit()">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8">
+					<h2>Formulario de edición</h2>
+					<div class="file mt-2" *ngIf="recuperando!=0">
+						<div class="alert alert-primary" role="alert" *ngIf="recuperando==1">
+							Cargando, por favor espera...
+						</div>
+						<div class="alert alert-danger" role="alert" *ngIf="recuperando==2">
+							Ha sucedido un error al obtener el registro.
+						</div>
+					</div>
 					<div class="form-group row mb-2">
 						<label class="col-sm-4 col-form-label text-end">
 							Asunto:
@@ -29,7 +37,7 @@
                     </div>
                     <div class="form-group row mb-2" *ngIf="!validando">
                         <div class="col-sm-8 offset-sm-4">
-                            <button type="submit" [ngClass]="{ 'is-invalid': enviado && error!='' }" class="btn btn-success">Enviar</button>
+                            <button type="submit" [ngClass]="{ 'is-invalid': enviado && error!='' }" class="btn btn-success">Editar</button>
                             <br/>
                             <div *ngIf="enviado && error!=''" class="invalid-feedback d-block">
 								{{error}}
@@ -43,55 +51,26 @@
 							</div>
                         </div>
                     </div>
-                    <div class="form-group row mb-2" *ngIf="guardado">
+                    <div class="form-group row mb-2" *ngIf="editado">
 						<div class="col-sm-8 offset-sm-4">
                             <div class="alert alert-success" role="alert">
-								Enviado correctamente.
+								Editado correctamente.
 							</div>
                         </div>
                     </div>
-				</form>
-				<!------------------ end mensaje ------------------>
-			</div>
-			<div class="col-4 offset-1">
-				<h2>Enviados</h2>
-				<div class="alert alert-danger mt-2" role="alert" *ngIf="error_mensajes!=''">
-					{{error_mensajes}}
 				</div>
-				<div class="file mt-2" *ngIf="error_mensajes==''">
-					<div class="row mb-2" *ngFor="let mensaje of mensajes">
-						<div class="col-sm-6">
-							<b>{{mensaje["asunto"]}}</b>
-						</div>
-						<div class="col-sm-6">
-							<button type="button" class="btn btn-primary btn-sm" (click)="editar(mensaje['id'])" >
-								Editar
+				<div class="col-sm-4">
+					<h2>&nbsp;</h2>
+                    <div class="form-group row mb-2">
+                        <div class="col-sm-8 offset-sm-4">
+							<button type="button" class="btn btn-primary" (click)="regresar()" >
+								Regresar
 							</button>
-							&nbsp;
-							<button type="button" class="btn btn-danger btn-sm" (click)="eliminar(mensaje['id'])" >
-								Eliminar
-							</button>
-						</div>
-						<div class="col-sm-12">
-							{{mensaje["mensaje"]}}
-						</div>
-						<div class="col-sm-12">
-							<hr/>
-						</div>
-					</div>
+                        </div>
+                    </div>
 				</div>
-                <div class="row mb-2" *ngIf="eliminando!=0">
-					<div class="alert alert-primary" role="alert" *ngIf="eliminando==1">
-						Eliminando, por favor espera...
-					</div>
-					<div class="alert alert-danger" role="alert" *ngIf="eliminando==2">
-						Ha sucedido un error al eliminar.
-					</div>
-					<div class="alert alert-success" role="alert" *ngIf="eliminando==3">
-						Eliminado correctamente.
-					</div>
-                </div>
 			</div>
 		</div>
-	</div>
+	</form>
+	<!------------------ end mensaje ------------------>
 </div>
