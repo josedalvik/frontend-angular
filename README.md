@@ -1,5 +1,7 @@
 <h1>Proyecto frontend</h1>
 <h2>Jose Pablo Godoy Linares</h2>
+<small>URL Github: <a href="https://github.com/josedalvik/frontend-angular">https://github.com/josedalvik/frontend-angular</a></small>
+<br/>
 Esta es una aplicación Angular
 <br/>
 <br/>
